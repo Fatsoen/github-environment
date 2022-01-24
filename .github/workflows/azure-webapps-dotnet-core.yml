@@ -37,7 +37,9 @@ jobs:
 
   deploy-dev:
     runs-on: ubuntu-latest
-    environment: 'dev'
+    environment: 
+      name: 'dev'
+      url: https://github-dev.azurewebsites.net/
     needs: build-and-publish
     steps:
       - name: Download artifact from build job
@@ -57,7 +59,9 @@ jobs:
 
   deploy-prod:
     runs-on: ubuntu-latest
-    environment: 'prod'
+    environment: 
+      name: 'prod'
+      url: https://github-prod.azurewebsites.net/
     needs: [build-and-publish, deploy-dev]
     steps:
       - name: Download artifact from build job
